@@ -6,7 +6,7 @@
 
 ### A retro Macintosh-inspired system monitor for macOS.
 
-A small native macOS dashboard for system stats, weather, and Now Playing — styled like a classic Macintosh.
+A small native macOS dashboard for live system stats, weather, and Now Playing — designed to feel at home on a retro Mac-inspired setup.
 
 [**Download Wokyintosh 1.0.0**](https://github.com/SalarFarahani/Wokyintosh/releases/tag/v1.0.0)
 
@@ -14,9 +14,19 @@ A small native macOS dashboard for system stats, weather, and Now Playing — st
 
 ---
 
-## What it does
+## Why I built Wokyintosh
 
-Wokyintosh turns a Mac display into a compact retro dashboard with live information from your system.
+After several months of owning a **Wokyis M5 Retro Dock Station**, I still couldn't find the dashboard/widget I actually wanted for its display — not even a paid one.
+
+So I decided to build it myself.
+
+With the help of **ChatGPT** and a vibe-coding approach, that idea became **Wokyintosh**: a small native macOS system monitor designed around the kind of retro dashboard I wanted to see on my own setup.
+
+It started as a personal project for my M5 Retro Dock Station, but I decided to make it public in case other Mac users were looking for something similar.
+
+> Wokyintosh — A Mac System Monitor for Team Wokyis, by Salar Farahani ;-)
+
+## Features
 
 - Live CPU usage
 - Live RAM usage
@@ -28,15 +38,8 @@ Wokyintosh turns a Mac display into a compact retro dashboard with live informat
 - Local weather
 - Automatic light / dark appearance following macOS
 - Short classic-Mac-inspired startup screen
+- Retro Macintosh-inspired interface
 - Native macOS app built with AppKit + WebKit
-
-## Why Wokyintosh?
-
-Wokyintosh started as a dashboard for a small external display used with a Mac mini setup.
-
-The goal is simple: useful live information, very little visual noise, and a playful classic-Macintosh feel.
-
-> Wokyintosh — A Mac System Monitor for Team Wokyis, by Salar Farahani ;-)
 
 ## Download
 
@@ -46,17 +49,18 @@ The goal is simple: useful live information, very little visual noise, and a pla
 
 Requires **macOS 13 Ventura or later**.
 
-After downloading:
+### Installation
 
-1. Extract `Wokyintosh-1.0.0-macOS.zip`.
-2. Move `Wokyintosh.app` to your Applications folder.
-3. Open Wokyintosh.
+1. Download `Wokyintosh-1.0.0-macOS.zip` from the latest release.
+2. Extract the ZIP.
+3. Move `Wokyintosh.app` to your Applications folder.
+4. Open Wokyintosh.
 
 ### Gatekeeper notice
 
 Wokyintosh 1.0 is currently distributed without an Apple Developer ID and is **not notarized by Apple**.
 
-macOS may therefore block the first launch.
+Because of this, macOS may block the first launch.
 
 If that happens:
 
@@ -86,48 +90,34 @@ Wokyintosh is designed to run locally on your Mac.
 
 ## Build from source
 
-Wokyintosh can be built using Apple's Command Line Tools. The full Xcode application is not required for the current build workflow.
+If you'd rather build Wokyintosh yourself:
 
 1. Clone or download this repository.
-2. Run:
+2. Run `Build Wokyintosh.command`.
+3. The resulting app will be created at `build/Wokyintosh.app`.
 
-   `Build Wokyintosh.command`
+The current build workflow uses Apple's Command Line Tools and does not require the full Xcode application.
 
-3. The app will be created at:
-
-   `build/Wokyintosh.app`
-
-To create the ZIP used for GitHub Releases, run:
-
-`Package Release.command`
-
-The release package will be created at:
-
-`dist/Wokyintosh-1.0.0-macOS.zip`
-
-## Tech
+## Built with
 
 - Swift
 - AppKit
 - WebKit / WKWebView
 - Core Location
 - Native macOS system APIs
-- AppleScript integration for Apple Music / Spotify
+- AppleScript integration for Apple Music and Spotify
+- ChatGPT-assisted vibe coding
 
-## Current status
+## Roadmap
 
-### Version 1.0.0
+Some ideas for future versions:
 
-Released September 2026.
-
-Current focus:
-
-- Stability
-- UI polish
-- Better display/window controls
 - User-configurable settings
-- Theme controls
-- Easier distribution
+- Manual theme controls
+- Better display and window controls
+- More dashboard customization
+- Easier installation and distribution
+- Further UI polish
 
 ## Feedback
 
@@ -135,7 +125,7 @@ Found a bug or have an idea?
 
 Use [GitHub Issues](https://github.com/SalarFarahani/Wokyintosh/issues).
 
-Bug reports and feature requests are welcome.
+Bug reports, feature requests, and suggestions are welcome.
 
 ## License
 
