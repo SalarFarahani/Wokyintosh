@@ -1,0 +1,264 @@
+:root{
+  --ink:#0c0c0c;--paper:#f1ecd8;--paper2:#ddd7c5;--white:#fffdf3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper2);font-family:Chicago,Geneva,Monaco,"Courier New",monospace;color:var(--ink);image-rendering:pixelated}
+.dashboard{
+  position:fixed;inset:0;width:100vw;height:100vh;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.026) 1px,transparent 1px),
+    linear-gradient(rgba(0,0,0,.026) 1px,transparent 1px),var(--paper2);
+  background-size:4px 4px;padding:5.2vh 3.2vw 3.7vh;
+}
+.classic-box{background:var(--paper);border:.32vw solid var(--ink);box-shadow:.4vw .4vw 0 var(--ink),inset .16vw .16vw 0 var(--white),inset -.16vw -.16vw 0 #a8a394}
+.top{height:28.2vh;display:grid;grid-template-columns:1fr 25.5vw;gap:2.5vw;align-items:stretch}
+.time-block{display:flex;flex-direction:column;justify-content:center;padding-left:.7vw}
+.time{font-size:min(23.5vh,13vw);line-height:.76;letter-spacing:-.85vw;font-weight:700}
+.date{margin-top:3.2vh;font-size:min(4.4vh,2.45vw);font-weight:700}
+.weather-card{display:grid;grid-template-columns:9.5vw 1fr;align-items:center;padding:3vh 1.8vw}
+.weather-icon{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.weather-icon svg{width:72%;height:72%;display:block;overflow:visible}
+.weather-icon .wx-fill{fill:var(--ink)}.weather-icon .wx-stroke{fill:none;stroke:var(--ink);stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.weather-temp{font-size:min(7.2vh,4vw);line-height:1;font-weight:700}.weather-text{margin-top:1.2vh;font-size:min(3vh,1.7vw);font-weight:700}.weather-location{margin-top:1.5vh;font-size:min(2.1vh,1.2vw);letter-spacing:.16vw}
+.separator{height:.55vh;min-height:3px;background:var(--ink);margin:3vh 0;box-shadow:0 .25vh 0 var(--white)}
+.music-card{height:32.5vh;display:grid;grid-template-columns:14.7vw 1fr;gap:2.3vw;padding:3vh 1.7vw}
+.album-frame{position:relative;width:14.6vw;height:26vh;max-height:26vh;aspect-ratio:1;border:.32vw solid var(--ink);overflow:hidden;background:var(--white)}
+.artwork{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.65) brightness(1.05);z-index:1}.artwork.hidden{display:none}
+.art-dither{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(circle at 1px 1px,rgba(0,0,0,.34) 1px,transparent 1.2px);background-size:4px 4px;mix-blend-mode:multiply}
+.fallback-art{position:absolute;inset:0;background:repeating-linear-gradient(0deg,#111 0 4px,#eee 4px 8px)}
+.fallback-moon{position:absolute;width:15%;aspect-ratio:1;border-radius:50%;background:var(--paper);right:12%;top:11%}
+.fallback-city{position:absolute;left:8%;right:8%;bottom:24%;height:38%;background:linear-gradient(90deg,#111 0 9%,transparent 9% 15%,#111 15% 29%,transparent 29% 35%,#111 35% 47%,transparent 47% 56%,#111 56% 70%,transparent 70% 78%,#111 78% 100%)}
+.fallback-road{position:absolute;left:31%;right:31%;bottom:-4%;height:38%;background:var(--paper);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%)}
+.music-info{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}.eyebrow{font-size:min(2.45vh,1.4vw);font-weight:700;margin-bottom:.25vh;flex:0 0 auto}
+.track{font-size:min(4.2vh,2.35vw);line-height:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 0 auto}
+.artist{margin-top:.7vh;font-size:min(2.75vh,1.55vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 0 auto}
+.progress-shell{margin-top:2vh;height:3.3vh;border:.32vw solid var(--ink);background:var(--white);padding:.25vw;flex:0 0 auto}
+.progress-fill,.mini-fill{width:0;height:100%;background:repeating-linear-gradient(90deg,var(--ink) 0 .48vw,var(--paper) .48vw .78vw)}
+.music-bottom{margin-top:auto;padding-top:.6vh;display:flex;align-items:end;justify-content:space-between;flex:0 0 auto}.controls{display:flex;gap:2.7vw;font-size:min(4vh,2.2vw);font-weight:700}.music-meta{display:flex;gap:1.5vw;font-size:min(1.9vh,1.05vw);font-weight:700}
+.stats{height:19.5vh;margin-top:3vh;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5vw}
+.stat{display:grid;grid-template-columns:3.6vw 1fr;grid-template-rows:auto auto 3.4vh;column-gap:.9vw;padding:2.2vh 1.3vw 1.8vh}.stat-icon{grid-row:1/3;font-size:min(5.7vh,3.15vw);align-self:center;text-align:center}.stat-label{font-size:min(2.45vh,1.35vw);font-weight:700}.stat-value{font-size:min(3.9vh,2.15vw);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini-meter{grid-column:1/3;height:2.75vh;border:.28vw solid var(--ink);background:var(--white);padding:.2vw;margin-top:1.25vh}
+.footer{position:absolute;left:3.2vw;right:3.2vw;bottom:1vh;display:flex;justify-content:space-between;font-size:min(1.55vh,.9vw);font-weight:700}
+.crt-scan{pointer-events:none;position:absolute;inset:0;z-index:20;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.045) 2px 4px);mix-blend-mode:multiply}.crt-vignette{pointer-events:none;position:absolute;inset:0;z-index:21;background:radial-gradient(ellipse at center,transparent 62%,rgba(0,0,0,.18) 100%);box-shadow:inset 0 0 2.5vw rgba(0,0,0,.28)}
+.boot{position:fixed;inset:0;z-index:100;background:#ece7d5;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:bootAway .18s steps(1,end) .72s forwards}.boot-mac{width:4.4vw;height:9.4vh;border:.28vw solid #111;border-radius:.4vw;position:relative}.boot-face{position:absolute;left:15%;right:15%;top:12%;height:50%;border:.23vw solid #111;background:#fff;text-align:center;font-size:min(3.4vh,1.9vw);line-height:3.4vh}.boot-slot{position:absolute;left:27%;right:27%;bottom:14%;height:.5vh;background:#111}.boot-text{margin-top:1.4vh;font-size:min(1.8vh,1vw);font-weight:700}@keyframes bootAway{to{visibility:hidden}}
+
+
+/* Native WKWebView boot fallback */
+.boot-hidden{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+  transition:opacity .18s steps(3,end);
+}
+
+
+/* Wokyintosh v2 music layout polish */
+.music-card{
+  grid-template-columns:14.2vw 1fr;
+  gap:2vw;
+  padding:2.8vh 1.55vw;
+}
+.album-frame{
+  width:14vw;
+  height:25.2vh;
+  max-height:25.2vh;
+}
+.music-info{
+  display:grid;
+  grid-template-rows:auto auto auto 1fr auto;
+  align-content:stretch;
+  min-height:0;
+  overflow:hidden;
+  padding-top:.1vh;
+}
+.eyebrow{
+  margin-bottom:.1vh;
+}
+.track{
+  font-size:min(3.7vh,2.05vw);
+  line-height:1.02;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
+}
+.artist{
+  margin-top:.45vh;
+  font-size:min(2.45vh,1.38vw);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.progress-shell{
+  margin-top:1.45vh;
+  height:3.05vh;
+}
+.music-bottom{
+  margin-top:0;
+  padding-top:.4vh;
+  align-self:end;
+}
+.controls{
+  gap:2.35vw;
+  font-size:min(3.5vh,1.95vw);
+}
+.music-meta{
+  gap:1.15vw;
+  font-size:min(1.72vh,.96vw);
+}
+.footer{
+  gap:1vw;
+}
+.footer > span:first-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+
+/* Fix descenders in track names (g, y, p, q, j) without letting text
+   collide with the progress/control area. */
+.track{
+  line-height:1.16 !important;
+  padding-bottom:.14em;
+  margin-bottom:-.04em;
+  min-height:1.22em;
+}
+
+
+/* Automatic macOS dark appearance — inverted Wokyintosh palette.
+   No JavaScript or preference storage is required; WebKit follows the
+   system's prefers-color-scheme setting live. */
+html{
+  color-scheme:light dark;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#f1ecd8;
+    --paper:#151515;
+    --paper2:#090909;
+    --white:#2a2a27;
+  }
+
+  html,body{
+    background:var(--paper2);
+    color:var(--ink);
+  }
+
+  .dashboard{
+    background:
+      linear-gradient(90deg,rgba(255,253,243,.035) 1px,transparent 1px),
+      linear-gradient(rgba(255,253,243,.035) 1px,transparent 1px),
+      var(--paper2);
+  }
+
+  .classic-box{
+    background:var(--paper);
+    border-color:var(--ink);
+    box-shadow:
+      .4vw .4vw 0 var(--ink),
+      inset .16vw .16vw 0 #34342f,
+      inset -.16vw -.16vw 0 #000;
+  }
+
+  .separator{
+    background:var(--ink);
+    box-shadow:0 .25vh 0 #33332f;
+  }
+
+  .album-frame,
+  .progress-shell,
+  .mini-meter{
+    background:#0b0b0b;
+    border-color:var(--ink);
+  }
+
+  .progress-fill,
+  .mini-fill{
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--ink) 0 .48vw,
+        var(--paper) .48vw .78vw
+      );
+  }
+
+  .fallback-art{
+    background:
+      repeating-linear-gradient(
+        0deg,
+        var(--ink) 0 4px,
+        var(--paper) 4px 8px
+      );
+  }
+
+  .fallback-moon,
+  .fallback-road{
+    background:var(--paper);
+  }
+
+  .fallback-city{
+    background:
+      linear-gradient(
+        90deg,
+        var(--ink) 0 9%,transparent 9% 15%,
+        var(--ink) 15% 29%,transparent 29% 35%,
+        var(--ink) 35% 47%,transparent 47% 56%,
+        var(--ink) 56% 70%,transparent 70% 78%,
+        var(--ink) 78% 100%
+      );
+  }
+
+  .artwork{
+    filter:grayscale(1) contrast(1.55) brightness(.72);
+  }
+
+  .art-dither{
+    background:
+      radial-gradient(
+        circle at 1px 1px,
+        rgba(255,253,243,.20) 1px,
+        transparent 1.2px
+      );
+    mix-blend-mode:screen;
+  }
+
+  .crt-scan{
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0 2px,
+        rgba(255,253,243,.028) 2px 4px
+      );
+    mix-blend-mode:screen;
+  }
+
+  .crt-vignette{
+    background:
+      radial-gradient(
+        ellipse at center,
+        transparent 58%,
+        rgba(0,0,0,.55) 100%
+      );
+    box-shadow:inset 0 0 3vw rgba(0,0,0,.75);
+  }
+
+  .boot{
+    background:#0b0b0b;
+    color:var(--ink);
+  }
+
+  .boot-mac{
+    border-color:var(--ink);
+  }
+
+  .boot-face{
+    border-color:var(--ink);
+    background:#111;
+    color:var(--ink);
+  }
+
+  .boot-slot{
+    background:var(--ink);
+  }
+}

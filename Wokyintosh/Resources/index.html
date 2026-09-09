@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wokyintosh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="boot" class="boot">
+  <div class="boot-mac">
+    <div class="boot-face">⌣</div>
+    <div class="boot-slot"></div>
+  </div>
+  <div class="boot-text">Welcome to Macintosh.</div>
+</div>
+
+<main class="dashboard">
+  <div class="crt-scan"></div>
+  <div class="crt-vignette"></div>
+
+  <header class="top">
+    <section class="time-block">
+      <div id="time" class="time">--:--</div>
+      <div id="date" class="date">—</div>
+    </section>
+
+    <section class="weather-card classic-box">
+      <div id="weather-icon" class="weather-icon"></div>
+      <div>
+        <div id="weather-temp" class="weather-temp">--°C</div>
+        <div id="weather-text" class="weather-text">Loading...</div>
+        <div id="location-name" class="weather-location">LOCAL</div>
+      </div>
+    </section>
+  </header>
+
+  <div class="separator"></div>
+
+  <section class="music-card classic-box">
+    <div class="album-frame">
+      <img id="artwork" class="artwork hidden" alt="">
+      <div id="fallback-art" class="fallback-art">
+        <div class="fallback-moon"></div>
+        <div class="fallback-city"></div>
+        <div class="fallback-road"></div>
+      </div>
+      <div class="art-dither"></div>
+    </div>
+
+    <div class="music-info">
+      <div class="eyebrow">Now Playing</div>
+      <div id="track" class="track">Nothing playing</div>
+      <div id="artist" class="artist">Music / Spotify</div>
+      <div class="progress-shell"><div id="progress-bar" class="progress-fill"></div></div>
+      <div class="music-bottom">
+        <div class="controls"><span>◀◀</span><span id="play-state">▶</span><span>▶▶</span></div>
+        <div class="music-meta"><span id="source">—</span><span id="elapsed">00:00 / 00:00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat classic-box">
+      <div class="stat-icon">▣</div><div class="stat-label">CPU</div>
+      <div id="cpu" class="stat-value">--%</div>
+      <div class="mini-meter"><div id="cpu-bar" class="mini-fill"></div></div>
+    </div>
+    <div class="stat classic-box">
+      <div class="stat-icon">▥</div><div class="stat-label">RAM</div>
+      <div id="ram" class="stat-value">--%</div>
+      <div class="mini-meter"><div id="ram-bar" class="mini-fill"></div></div>
+    </div>
+    <div class="stat classic-box">
+      <div class="stat-icon">▤</div><div class="stat-label">SSD</div>
+      <div id="ssd" class="stat-value">-- GB</div>
+      <div class="mini-meter"><div id="ssd-bar" class="mini-fill"></div></div>
+    </div>
+    <div class="stat classic-box">
+      <div class="stat-icon">⌁</div><div class="stat-label">NET</div>
+      <div id="net" class="stat-value">--</div>
+      <div class="mini-meter"><div id="net-bar" class="mini-fill"></div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Wokyintosh — A Mac System Monitor for Team Wokyis, by Salar Farahani ;-)</span>
+    <span>Version: 1.0 (Sep. 2026)</span>
+  </footer>
+</main>
+
+
+<script>
+(function () {
+  function dismissBoot() {
+    var boot = document.getElementById('boot');
+    if (!boot) return;
+    boot.classList.add('boot-hidden');
+    setTimeout(function () {
+      if (boot && boot.parentNode) boot.parentNode.removeChild(boot);
+    }, 220);
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    setTimeout(dismissBoot, 780);
+  });
+
+  window.addEventListener('load', function () {
+    setTimeout(dismissBoot, 650);
+  });
+
+  // Last-resort fallback: no dependency on external JavaScript.
+  setTimeout(dismissBoot, 1400);
+})();
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
