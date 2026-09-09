@@ -12,6 +12,10 @@ A small native macOS dashboard for live system stats, weather, and Now Playing â
 
 </div>
 
+<p align="center">
+  <img src="assets/wokyintosh-dashboard-light.png" alt="Wokyintosh dashboard in light mode">
+</p>
+
 ---
 
 ## Why I built Wokyintosh
